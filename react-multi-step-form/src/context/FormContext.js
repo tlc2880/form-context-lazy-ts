@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react"
+import { createContext, useState } from "react"
 
 const FormContext = createContext({})
 
@@ -23,7 +23,7 @@ export const FormProvider = ({ children }) => {
         addressAddress2: "",
         addressCity: "",
         addressState: "",
-        addressZipcode: ""
+        addressZipCode: ""
     })
 
     const handleChange = e => {
@@ -40,25 +40,23 @@ export const FormProvider = ({ children }) => {
     }
 
     const {
-        personalFirst,
-        contactEmail,
-        addressAddress1,
+        addressAddress2,
         ...requiredInputs } = data
 
     const canSubmit = [...Object.values(requiredInputs)].every(Boolean) && page === Object.keys(title).length - 1
 
     const canNextPage1 = Object.keys(data)
-        .filter(key => key.startsWith('personal') && key !== 'personalFirstName')
+        .filter(key => key.startsWith('personal'))
         .map(key => data[key])
         .every(Boolean)
 
     const canNextPage2 = Object.keys(data)
-        .filter(key => key.startsWith('contact') && key !== 'contactEmail')
+        .filter(key => key.startsWith('contact'))
         .map(key => data[key])
         .every(Boolean)
 
     const canNextPage3 = Object.keys(data)
-        .filter(key => key.startsWith('address') && key !== 'contactAddress1')
+        .filter(key => key.startsWith('address') && key !== 'addressAddress2')
         .map(key => data[key])
         .every(Boolean)
 
@@ -68,7 +66,7 @@ export const FormProvider = ({ children }) => {
         (page === Object.keys(title).length - 1)
         || (page === 0 && !canNextPage1)
         || (page === 1 && !canNextPage2)
-  
+        || (page === 2 && !canNextPage3)
 
     const prevHide = page === 0 && "remove-button"
 
