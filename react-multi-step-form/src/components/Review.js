@@ -1,7 +1,7 @@
 import useFormContext from "../hooks/useFormContext"
 
 const Review = () => {
-    const { data, handleChange } = useFormContext()
+    const { data } = useFormContext()
 
     const content = (
         <>

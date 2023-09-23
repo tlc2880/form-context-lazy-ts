@@ -43,7 +43,7 @@ const Form = () => {
                     <button 
                         type="submit" 
                         className={`button ${submitHide}`} 
-                        disabled={canSubmit}
+                        disabled={!canSubmit}
                     >
                         Submit
                     </button>
