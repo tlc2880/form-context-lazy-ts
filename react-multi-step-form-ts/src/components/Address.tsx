@@ -1,7 +1,9 @@
-import useFormContext from "../hooks/useFormContext"
+import React, { useState, ChangeEvent, ChangeEventHandler } from 'react';
+import { useForm }  from "../context/FormContext";
 
 const Address = () => {
-    const { data, handleChange } = useFormContext()
+    const { data, handleChange, handleSelectChange }  = useForm()
+
     const content = (
         <>
             <label htmlFor="addressAddress1">Address</label>
@@ -41,7 +43,7 @@ const Address = () => {
                 id="addressState"
                 name="addressState"
                 value={data.addressState}
-                onChange={handleChange}
+                onChange={handleSelectChange}
             >
                 <option value="AL">Alabama</option>
                 <option value="AK">Alaska</option>
@@ -103,7 +105,7 @@ const Address = () => {
                 name="addressZipCode"
                 placeholder="12345"
                 pattern="[0-9]{5}"
-                maxLength="5"
+                maxLength = {5}
                 value={data.addressZipCode}
                 onChange={handleChange}
             />
