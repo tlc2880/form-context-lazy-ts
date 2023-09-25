@@ -6,6 +6,11 @@
   box-sizing: border-box;
 }
 
+h2.center {
+  width: 100%;
+  text-align:center;
+  color: white;
+}
 /* || UTILITY CLASSES */
 
 .remove-button {

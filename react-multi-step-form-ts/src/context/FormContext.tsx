@@ -143,9 +143,9 @@ const initContextState: UseFormContextType = {
     page: 0,
     setPage: () => { },
     data: initData,
-    canSubmit: true,
-    disablePrev: true,
-    disableNext: true,
+    canSubmit: false,
+    disablePrev: false,
+    disableNext: false,
     prevHide: '',
     nextHide: '',
     submitHide: ''
