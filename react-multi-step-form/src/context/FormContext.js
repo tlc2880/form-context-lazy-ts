@@ -13,7 +13,7 @@ export const FormProvider = ({ children }) => {
 
     const [page, setPage] = useState(0)
 
-    const [data, setData] = useState({
+    const [data, setData] = useState<Array.Map>({
         personalFirstName: "",
         personalLastName: "",
         personalAge: "",
