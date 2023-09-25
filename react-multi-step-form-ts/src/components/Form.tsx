@@ -3,9 +3,13 @@ import FormInputs from './FormInputs';
 import { useForm } from '../context/FormContext'
 const Form = () => {
     const {
+        page,
         setPage,
         data,
+        title,
         canSubmit,
+        disablePrev,
+        disableNext,
         prevHide,
         nextHide,
         submitHide
@@ -20,12 +24,13 @@ const Form = () => {
     const content = (
         <form className="form flex-col" onSubmit={handleSubmit}>
             <header className="form-header">
-                
+                <h2>{title[page as keyof typeof title]}</h2>
                 <div className="button-container">
                     <button 
                         type="button" 
                         className={`button ${prevHide}`} 
-                        onClick={handlePrev} 
+                        onClick={handlePrev}
+                        disabled={disablePrev}
                     >
                         Prev
                     </button>
@@ -33,6 +38,7 @@ const Form = () => {
                         type="button" 
                         className={`button ${nextHide}`} 
                         onClick={handleNext} 
+                        disabled={disableNext}
                     >
                         Next
                     </button>

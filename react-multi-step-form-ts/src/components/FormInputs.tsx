@@ -12,9 +12,12 @@ const FormInputs = () => {
         2: <Address />,
         3: <Review />
     }
+    let keyArr = Object.keys(display);
+    let num = 2;
+
     const content = (
         <div className="form-inputs flex-col">
-            {display[page]}
+            {display[page as keyof typeof display]}
         </div>
     )
     return content
