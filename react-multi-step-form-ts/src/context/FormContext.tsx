@@ -33,18 +33,7 @@ const initData: DataType = {
 }
 
 const useFormContext = () => {
-    const [data, setData] = useState({
-        personalFirstName: "",
-        personalLastName: "",
-        personalAge: "",
-        contactPhone: "",
-        contactEmail: "",
-        addressAddress1: "",
-        addressAddress2: "",
-        addressCity: "",
-        addressState: "",
-        addressZipCode: ""
-    })
+    const [data, setData] = useState<DataType>(initData)
 
     const title = {
         0: 'Personal Details',
@@ -85,9 +74,9 @@ const useFormContext = () => {
     const canSubmit = [...Object.values(requiredInputs)].every(Boolean) && page === Object.keys(title).length - 1
 
     const canNextPage1 = Object.keys(data)
-    .filter(key => key.startsWith('personal'))
-    .map(key => data[key as keyof typeof data])
-    .every(Boolean)
+        .filter(key => key.startsWith('personal'))
+        .map(key => data[key as keyof typeof data])
+        .every(Boolean)
 
     const canNextPage2 = Object.keys(data)
         .filter(key => key.startsWith('contact'))
@@ -114,12 +103,12 @@ const useFormContext = () => {
     const submitHide = page !== Object.keys(title).length - 1 && "remove-button"
 
     return { 
+        data,
         handleChange,
         handleSelectChange,
+        title,
         page,
         setPage,
-        title,
-        data,
         canSubmit,
         disablePrev,
         disableNext,
@@ -132,6 +121,7 @@ const useFormContext = () => {
 type UseFormContextType = ReturnType<typeof useFormContext>
 
 const initContextState: UseFormContextType = {
+    data: initData,
     handleChange: (e: ChangeEvent<HTMLInputElement>) => { },
     handleSelectChange: (e: ChangeEvent<HTMLSelectElement>) => { },
     title: {
@@ -142,7 +132,6 @@ const initContextState: UseFormContextType = {
     },
     page: 0,
     setPage: () => { },
-    data: initData,
     canSubmit: false,
     disablePrev: false,
     disableNext: false,
@@ -172,8 +161,8 @@ type UseFormHookType = {
     data: DataType,
     handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
     handleSelectChange: (e: React.ChangeEvent<HTMLSelectElement>) => void,
-    page: number,
     title: {},
+    page: number,
     setPage: React.Dispatch<React.SetStateAction<number>>,
     canSubmit: boolean,
     disablePrev: boolean,
@@ -184,6 +173,33 @@ type UseFormHookType = {
 }
 
 export const useForm = (): UseFormHookType => {
-    const { data, handleChange, handleSelectChange, title, page, setPage, canSubmit, disablePrev, disableNext, prevHide, nextHide, submitHide } = useContext(CounterContext)
-    return { data, handleChange, handleSelectChange, title, page, setPage, canSubmit, disablePrev, disableNext, prevHide, nextHide, submitHide }
+    const { 
+        data, 
+        handleChange, 
+        handleSelectChange, 
+        title, 
+        page, 
+        setPage, 
+        canSubmit, 
+        disablePrev, 
+        disableNext, 
+        prevHide, 
+        nextHide, 
+        submitHide 
+    } = useContext(CounterContext)
+
+    return { 
+        data, 
+        handleChange, 
+        handleSelectChange, 
+        title, 
+        page, 
+        setPage, 
+        canSubmit, 
+        disablePrev, 
+        disableNext, 
+        prevHide, 
+        nextHide, 
+        submitHide  
+    }
 }
