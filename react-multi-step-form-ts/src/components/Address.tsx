@@ -10,7 +10,7 @@ const Address = () => {
                 type="text"
                 id="addressAddress1"
                 name="addressAddress1"
-                placeholder="555 Wallaby Way"
+                placeholder="123 W. Main Street"
                 pattern="[\w\d\s.#]{2,}"
                 value={data.addressAddress1}
                 onChange={handleChange}
