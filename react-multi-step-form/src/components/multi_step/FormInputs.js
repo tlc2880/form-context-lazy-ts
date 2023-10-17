@@ -3,7 +3,7 @@ import Address from "./Address"
 import Contact from "./Contact"
 import Review from "./Review"
 
-import useFormContext from "../hooks/useFormContext"
+import useFormContext from "../../hooks/useFormContext"
 
 const FormInputs = () => {
     const { page } = useFormContext()
