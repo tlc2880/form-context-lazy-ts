@@ -6,5 +6,5 @@ A code example of creating a multistep form using React Hook Form for the tutori
 Install:
 > npm i
 
-Reun:
+Run:
 > npm start
