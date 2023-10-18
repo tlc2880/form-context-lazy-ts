@@ -2,7 +2,7 @@ import Personal from "./Personal"
 import Address from "./Address"
 import Contact from "./Contact"
 import Review from "./Review"
-import { useForm } from '../context/FormContext'
+import { useForm } from '../../context/FormContext'
 
 const FormInputs = () => {
     const { page } = useForm()

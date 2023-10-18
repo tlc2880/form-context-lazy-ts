@@ -3,7 +3,9 @@ import {
     ChangeEvent, 
     ReactElement, 
     useContext, 
-    useState 
+    useState,
+    Dispatch,
+    SetStateAction
 } from "react"
 
 type DataType = {
@@ -140,30 +142,30 @@ const initContextState: UseFormContextType = {
     submitHide: ''
 }
 
-export const CounterContext = createContext<UseFormContextType>(initContextState)
+export const Context = createContext<UseFormContextType>(initContextState)
 
 type ChildrenType = {
     children?: ReactElement | ReactElement[] | undefined
 }
 
-export const CounterProvider = ({
+export const FormProvider = ({
     children
 }: ChildrenType): ReactElement => {
 
     return (
-        <CounterContext.Provider value={useFormContext()}>
+        <Context.Provider value={useFormContext()}>
             {children}
-        </CounterContext.Provider>
+        </Context.Provider>
     )
 }
 
 type UseFormHookType = {
     data: DataType,
-    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void,
-    handleSelectChange: (e: React.ChangeEvent<HTMLSelectElement>) => void,
+    handleChange: (e: ChangeEvent<HTMLInputElement>) => void,
+    handleSelectChange: (e: ChangeEvent<HTMLSelectElement>) => void,
     title: {},
     page: number,
-    setPage: React.Dispatch<React.SetStateAction<number>>,
+    setPage: Dispatch<SetStateAction<number>>,
     canSubmit: boolean,
     disablePrev: boolean,
     disableNext: boolean,
@@ -186,7 +188,7 @@ export const useForm = (): UseFormHookType => {
         prevHide, 
         nextHide, 
         submitHide 
-    } = useContext(CounterContext)
+    } = useContext(Context)
 
     return { 
         data, 
