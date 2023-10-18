@@ -1,4 +1,4 @@
-import { useForm } from "../context/FormContext"
+import { useForm } from "../../context/FormContext"
 
 const Personal = () => {
     const { data, handleChange } = useForm()

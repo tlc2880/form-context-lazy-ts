@@ -1,6 +1,6 @@
 import { FormEvent } from "react";
 import FormInputs from './FormInputs';
-import { useForm } from '../context/FormContext'
+import { useForm } from '../../context/FormContext'
 const Form = () => {
     const {
         data,
