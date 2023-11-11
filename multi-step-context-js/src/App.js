@@ -1,7 +1,7 @@
 import React, { Suspense, lazy } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 import { ErrorBoundary } from 'react-error-boundary'
-import ErrorFallback from "./components/lazy/ErrorFallback"
+import ErrorFallback from './components/lazy/ErrorFallback'
 import { Home } from './components/lazy/Home'
 import { Navbar } from './components/lazy/Navbar'
 import SkeletonAbout from './components/lazy/skeletons/SkeletonAbout'
@@ -27,7 +27,7 @@ function App() {
             </ErrorBoundary>
           }
         />
-      </Routes>
+      </Routes> 
       <Navbar />
     </div>
   )
